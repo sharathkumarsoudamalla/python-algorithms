@@ -21,9 +21,29 @@ def two_sum_sol1(array, target_sum):
                 return [array[x], array[y]]
     return []
 
+def solution_2(array, target_sum):
+    """
+    This solution uses hash table to store the elements and
+    check if the sum pair is in the list. x+y=target_sum. therefore
+    y=target_sum-x
+    :param array:
+    :param target_sum:
+    :return:
+    """
+    hash_table = {}
+    for i in range(len(array)):
+        x = array[i]
+        y = target_sum-x
+        if y in hash_table:
+            return [y, x]
+        else:
+            hash_table[x] = True
+    return []
+
 
 if __name__ == "__main__":
     array = [3, -5, -4, 8, 11, 1, -1, 6]
     target_sum = 10
-    sol = two_sum_sol1(array, target_sum)
-    print(sol)
+    sol1 = two_sum_sol1(array, target_sum)
+    sol2 = solution_2(array, target_sum)
+    print(sol1, sol2)
